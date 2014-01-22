@@ -7,6 +7,7 @@ module RenderAnywhere
     include AbstractController::Helpers
     include AbstractController::Translation
     include AbstractController::AssetPaths
+    include PdfHelper
 
     # Define additional helpers, this one is for csrf_meta_tag
     helper_method :protect_against_forgery?
@@ -28,7 +29,11 @@ module RenderAnywhere
       config.javascripts_dir = Rails.root.join('public', 'javascripts')
       config.stylesheets_dir = Rails.root.join('public', 'stylesheets')
       config.assets_dir = Rails.root.join('public')
-      
+
+      if Mime::Type.lookup_by_extension(:pdf).nil?
+        Mime::Type.register('application/pdf', :pdf)
+      end
+
       # same asset host as the controllers
       self.asset_host = ActionController::Base.asset_host
     end
