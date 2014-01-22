@@ -1,5 +1,7 @@
 require 'abstract_controller'
 require 'action_view'
+require 'wicked_pdf/pdf_helper'
+require 'wicked_pdf/wicked_pdf_helper'
 
 require 'render_anywhere/version'
 require 'render_anywhere/rendering_controller'
