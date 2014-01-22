@@ -23,6 +23,8 @@ module RenderAnywhere
 
       # this is you normal rails application helper
       self.class.send :helper, ApplicationHelper
+      
+      # add your helper methods here
       self.class.send :helper, FontAwesome::Rails::IconHelper
 
       lookup_context.view_paths = Rails.root.join('app', 'views')
